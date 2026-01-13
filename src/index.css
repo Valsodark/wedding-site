@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@font-face {
+    font-family: 'Segoe Print';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe Print'), url('../public/segoepr.ttf') format('ttf');
+}
+
+*{
+    font-family: 'Segoe Print', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+:root {
+    --color-base-100: #f8f7f4;
+    --color-base-200: #ffffff;
+    --color-base-300: #f8f7f4;
+    --color-base-content: #8C857A;
+    --color-primary: #f8f7f4;
+    --color-primary-content: #5f9ea0;
+    --color-secondary: #5f9ea0;
+    --color-secondary-content: #5f9ea0;
+    --color-accent: oklch(77% 0.152 181.912);
+    --color-accent-content: oklch(38% 0.063 188.416);
+    --color-neutral: oklch(14% 0.005 285.823);
+    --color-neutral-content: oklch(92% 0.004 286.32);
+    --color-info: oklch(74% 0.16 232.661);
+    --color-info-content: oklch(29% 0.066 243.157);
+    --color-success: oklch(76% 0.177 163.223);
+    --color-success-content: oklch(37% 0.077 168.94);
+    --color-warning: oklch(82% 0.189 84.429);
+    --color-warning-content: oklch(41% 0.112 45.904);
+    --color-error: oklch(71% 0.194 13.428);
+    --color-error-content: oklch(27% 0.105 12.094);
+    --radius-selector: 0.5rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
+}
+.custom-selected{
+    position: relative;
+    background: transparent !important;
+    font-weight: 600;
+}
+.custom-selected::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: center / 57px 57px no-repeat
+    url("data:image/svg+xml;utf8,\
+<svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>\
+<path fill-rule='evenodd' clip-rule='evenodd' \
+d='M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z' \
+stroke='%23e11d48' stroke-width='0.456' stroke-linecap='round' stroke-linejoin='round'/>\
+</svg>");
+    pointer-events: none;
+    transform: translate(-50%, -50%) translateY(25px) translateX(19px);
+}
+
+.rdp-root{
+    color: #000 !important;
+}
+
+.rdp-caption_label {
+    color: var(--color-base-content) !important;
+}
+
+.rdp-chevron{
+    fill: var(--color-secondary) !important;
+}
+.rdp-today{
+    color: var(--color-secondary) !important;
+    font-weight: bold;
+}
+hr{
+    color: var(--color-primary-content) !important;
+    background-color: var(--color-primary-content) !important;
+}
