@@ -11,6 +11,8 @@
 
 *{
     font-family: 'Segoe Print', Tahoma, Geneva, Verdana, sans-serif;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
 
@@ -82,23 +84,4 @@ stroke='%23e11d48' stroke-width='0.456' stroke-linecap='round' stroke-linejoin='
 hr{
     color: var(--color-primary-content) !important;
     background-color: var(--color-primary-content) !important;
-}
-
-@theme {
-    --alert-fade-out {
-        animation: alertFadeOut 4s ease-in-out forwards;
-    }
-    @keyframes alertFadeOut {
-            0% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            80% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
 }
