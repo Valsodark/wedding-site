@@ -10,3 +10,6 @@ export {Starfish} from './Starfish'
 export {DressCode} from './DressCode'
 export {Form} from './Form'
 export {ShowAlert} from './ShowAlert'
+export {CustomerSupport} from './CustomerSupport'
+export {Gallery} from './Gallery'
+export {IntroVideo} from "./Intro.tsx"

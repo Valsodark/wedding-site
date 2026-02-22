@@ -35,7 +35,7 @@ export function Form() {
                 <h2 className="text-3xl font-bold mb-4">Ще присъствате ли?</h2>
 
                 {/* Основен гост */}
-                <label className="label font-bold">Име и фамилия</label>
+                <label className="label font-bold">Име и Фамилия</label>
                 <input className="input input-xl mb-2 w-full" type="text" name="name" required />
 
                 <label className="label font-bold">Имейл</label>
@@ -95,7 +95,7 @@ export function Form() {
                             <fieldset className="border p-4 rounded-lg mb-4">
                                 <legend className="font-bold">Данни за гост</legend>
 
-                                <label className="label font-bold mt-2">Име и фамилия</label>
+                                <label className="label font-bold mt-2">Име и Фамилия</label>
                                 <input className="input input-xl mb-2 w-full" type="text" name="guest_name" required />
 
                                 <label className="label font-bold">Имейл</label>
@@ -115,7 +115,7 @@ export function Form() {
                         )}
 
                         {/* Настаняване */}
-                        <label className="label font-bold mt-2 text-balance">Желаеш ли настаняване?</label>
+                        <label className="label font-bold mt-2 text-balance">Желаете ли настаняване?</label>
                         <div className="flex gap-4 mb-4">
                             <input type="radio" className="radio" name="accommodation" value="Да" defaultChecked />
                             <label>Да</label>
