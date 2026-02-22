@@ -1,5 +1,11 @@
 import {Spacer} from "./Spacer.tsx";
 import {Dot} from "./Dot.tsx";
+import glass from "../assets/glass.png"
+import rings from "../assets/rings.png"
+import cupcake from "../assets/cupcake.png"
+import chair from "../assets/chair.png"
+import cake from "../assets/cake.png"
+
 
 export function Timeline() {
     return (
@@ -18,7 +24,7 @@ export function Timeline() {
                           Начало на празничния ден с освежаващи напитки и приятни моменти.
                       </div>
                       <div className="timeline-end mb-10 md:text-end text-lg">
-                          <img className="" src="glass.png"/>
+                          <img alt="" className="" src={glass}/>
                       </div>
                       <hr />
                   </li>
@@ -33,7 +39,7 @@ export function Timeline() {
                           <Dot />
                       </div>
                       <div className="timeline-start md:mb-10 text-lg">
-                          <img className="" src="rings.png"/>
+                          <img alt="" className="" src={rings}/>
                       </div>
                       <hr />
                   </li>
@@ -48,7 +54,7 @@ export function Timeline() {
                           Споделени емоции и незабравими кадри.
                       </div>
                       <div className="timeline-end mb-10 md:text-end text-lg">
-                          <img className="" src="cupcake.png"/>
+                          <img alt="" className="" src={cupcake}/>
                       </div>
                       <hr />
                   </li>
@@ -58,7 +64,7 @@ export function Timeline() {
                           <Dot />
                       </div>
                       <div className="timeline-start md:mb-10 text-lg">
-                          <img className="" src="chair.png"/>
+                          <img alt="" className="" src={chair}/>
                       </div>
                       <div className="timeline-end md:mb-10 text-lg">
                           <time className="font-mono italic text-accent-content">20:00</time>
@@ -78,7 +84,7 @@ export function Timeline() {
                           Най-сладкият момент където ще се насладим на вкусна торта, празнична заря и прекрасни моменти!
                       </div>
                       <div className="timeline-end mb-10 md:text-end text-lg">
-                          <img className="h-58" src="cake.png"/>
+                          <img className="h-58" alt="" src={cake}/>
                       </div>
                   </li>
               </ul>
@@ -95,7 +101,7 @@ export function Timeline() {
                             Начало на празничния ден с освежаващи напитки и приятни моменти.
                         </div>
                         <div className="timeline-end mb-10 md:text-end text-lg">
-                            <img className="" src="glass.png"/>
+                            <img alt="" className="" src={glass}/>
                         </div>
                         <hr />
                     </li>
@@ -110,7 +116,7 @@ export function Timeline() {
                             <Dot />
                         </div>
                         <div className=" timeline-end md:mb-10 text-lg">
-                            <img className="" src="rings.png"/>
+                            <img alt="" className="" src={rings}/>
                         </div>
                         <hr />
                     </li>
@@ -125,7 +131,7 @@ export function Timeline() {
                             Споделени емоции и незабравими кадри.
                         </div>
                         <div className="timeline-end mb-10 md:text-end text-lg">
-                            <img className="h-50" src="cupcake.png"/>
+                            <img alt="" className="h-50" src={cupcake}/>
                         </div>
                         <hr />
                     </li>
@@ -135,7 +141,7 @@ export function Timeline() {
                             <Dot />
                         </div>
                         <div className="timeline-end sm:timeline-start md:mb-10 text-lg">
-                            <img className="" src="chair.png"/>
+                            <img alt="" className="" src={chair}/>
                         </div>
                         <div className="timeline-start sm:timeline-end md:mb-10 text-lg">
                             <time className="font-mono italic text-accent-content">20:00</time>
@@ -155,7 +161,7 @@ export function Timeline() {
                             Най-сладкият момент където ще се насладим на вкусна торта, празнична заря и прекрасни моменти!
                         </div>
                         <div className="timeline-end mb-10 md:text-end text-lg">
-                            <img className="h-58" src="cake.png"/>
+                            <img alt="" className="h-58" src={cake}/>
                         </div>
                     </li>
                 </ul>

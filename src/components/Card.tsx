@@ -1,4 +1,5 @@
 import {Calendar} from "./Calendar.tsx"
+import profile from "../assets/profiple.jpg"
 
 export function Card() {
     return (
@@ -9,7 +10,7 @@ export function Card() {
                         <div className="avatar">
                             <div className="w-70 rounded-full h-70 overflow-hidden">
                                 <img
-                                    src="profiple.jpg"
+                                    src={profile}
                                     alt="Profile"
                                     className="w-full h-full object-cover object-[79%_35px] scale-170"
                                 />

@@ -1,12 +1,20 @@
+import restorant from '../assets/restorant.png';
+import hotel from '../assets/hotel.png';
+
 export function Location() {
     return (
         <>
 
             <div className="flex w-full flex-col lg:flex-row items-center lg:items-start h-fit">
                 <div className="card bg-base-300 rounded-box grid lg:h-32 w-90 grow place-items-center">
-                    <h2 className="sm:text-2xl">ЛОКАЦИЯ</h2>
-                    <h2 className="sm:text-3xl">FIRST LINE Restaurant & Bar, Kranevo</h2>
-                    <img className="w-130" src="restorant.png"/>
+
+                    <div className="w-full text-center h-30">
+                        <h2 className="sm:text-2xl">ЛОКАЦИЯ</h2>
+                        <h2 className="sm:text-3xl">FIRST LINE Restaurant & Bar, Kranevo</h2>
+                    </div>
+
+
+                    <img className="w-130" src={restorant}/>
                     <p className="text-lg text-center">Като комплимент на желаещите предоставяме нощувкa в хотел AquaLife – 23.08.2026 - 24.08.2026</p>
                     <a
                         className="btn btn-primary mt-5"
@@ -17,11 +25,14 @@ export function Location() {
                         Open in Google Maps
                     </a>
                 </div>
-                <div className="divider lg:divider-horizontal lg:h-130"></div>
+                <div className="divider lg:divider-horizontal lg:h-150"></div>
                 <div className="card bg-base-300 rounded-box grid lg:h-32 w-90 grow place-items-center">
-                    <h2 className="sm:text-2xl">НАСТАНЯВАНЕ</h2>
-                    <h2 className="sm:text-3xl">AquaLife Hotel, Kranevo</h2>
-                    <img className="w-130" src="hotel.png"/>
+
+                    <div className="w-full text-center h-30">
+                        <h2 className="sm:text-2xl">НАСТАНЯВАНЕ</h2>
+                        <h2 className="sm:text-3xl">AquaLife Hotel, Kranevo</h2>
+                    </div>
+                    <img className="w-130" src={hotel}/>
                     <p className="text-lg text-center">Като комплимент на желаещите предоставяме нощувкa в хотел AquaLife – 23.08.2026 - 24.08.2026</p>
                     <a
                         className="btn btn-primary mt-5"

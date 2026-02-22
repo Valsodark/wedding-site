@@ -6,7 +6,7 @@
     font-family: 'Segoe Print';
     font-style: normal;
     font-weight: normal;
-    src: local('Segoe Print'), url('../public/segoepr.ttf') format('ttf');
+    src: local('Segoe Print'), url('assets/segoepr.ttf') format('ttf');
 }
 
 *{
@@ -82,4 +82,23 @@ stroke='%23e11d48' stroke-width='0.456' stroke-linecap='round' stroke-linejoin='
 hr{
     color: var(--color-primary-content) !important;
     background-color: var(--color-primary-content) !important;
+}
+
+@theme {
+    --alert-fade-out {
+        animation: alertFadeOut 4s ease-in-out forwards;
+    }
+    @keyframes alertFadeOut {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
 }

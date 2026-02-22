@@ -1,12 +1,16 @@
+import letter from '../assets/lettar.png'
+import flowers from '../assets/flowers.png'
+import woman from '../assets/woman.png'
+
 export function Information() {
     return (
         <>
             <div className="flex flex-col max-w-full  lg:flex-row gap-5 justify-center items-center bg-base-content pt-20 pb-20 pl-5 pr-5">
-                <div className="card bg-base-100 w-100 lg:w-96 shadow-sm lg:p-5">
+                <div className="card bg-base-100 w-full lg:w-96 shadow-sm lg:p-5">
                     <figure>
                         <img
                             className="h-70"
-                            src="lettar.png"
+                            src={letter}
                             alt="Shoes" />
                     </figure>
                     <div className="card-body lg:h-40">
@@ -14,10 +18,10 @@ export function Information() {
                         <p>Ако все пак желаете да ни зарадвате допълнително, бихме оценили вашия жест под формата на подарък в плик.</p>
                     </div>
                 </div>
-                <div className="card bg-base-100 w-100 lg:w-96 shadow-sm lg:p-5">
+                <div className="card bg-base-100 w-full lg:w-96 shadow-sm lg:p-5">
                     <figure>
                         <img className="h-70"
-                            src="flowers.png"
+                            src={flowers}
                             alt="Shoes" />
                     </figure>
                     <div className="card-body lg:h-40">
@@ -25,10 +29,10 @@ export function Information() {
                         <p>Молим ви да не носите цветя, тъй като ние сме предвидили достатъчно. Благодарим преадвапртелно!</p>
                     </div>
                 </div>
-                <div className="card bg-base-100 w-100 lg:w-96 shadow-sm lg:p-5">
+                <div className="card bg-base-100 w-full lg:w-96 shadow-sm lg:p-5">
                     <figure>
                         <img className="h-70"
-                             src="woman.png"
+                             src={woman}
                              alt="Shoes" />
                     </figure>
                     <div className="card-body lg:h-40">
