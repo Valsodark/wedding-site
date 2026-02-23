@@ -10,9 +10,25 @@ import {
     Information,
     DressCode,
     Form,
-    CustomerSupport, Gallery, IntroVideo
+     CustomerSupport, IntroVideo, Carousel, Footer
 } from "./components";
 import {useState} from "react";
+import image1 from "./assets/NataliaZhivko_0049.jpg";
+import image2 from "./assets/NataliaZhivko_0045.jpg";
+import image3 from "./assets/NataliaZhivko_0009.jpg";
+import image4 from "./assets/NataliaZhivko_0154.jpg";
+import image5 from "./assets/NataliaZhivko_0103.jpg";
+import image6 from "./assets/NataliaZhivko_0126.jpg";
+import image7 from "./assets/NataliaZhivko_140.jpg";
+const images = [
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+];
 
 function App() {
     const [introFinished, setIntroFinished] = useState(false);
@@ -39,8 +55,9 @@ function App() {
               <Spacer />
               <Form />
               <Spacer />
-              <Gallery />
+              <Carousel slides={images} />
               <Spacer />
+              <Footer />
       </>
   )
 }
