@@ -33,19 +33,19 @@ export function Form() {
             <form
                 ref={form}
                 onSubmit={sendEmail}
-                className="fieldset w-full max-w-lg bg-base-200 border border-base-300 rounded-lg p-6 text-2xl"
+                className="fieldset w-full max-w-lg bg-base-200 border border-base-300 rounded-lg p-6 lg:text-2xl"
             >
-                <h2 className="text-3xl font-bold mb-4">Ще присъствате ли?</h2>
+                <h2 className="text-lg lg:text-3xl font-bold mb-4">Ще присъствате ли?</h2>
 
                 {/* Основен гост */}
                 <label className="label font-bold">Име и Фамилия</label>
-                <input className="input input-xl mb-2 w-full" type="text" name="name" required />
+                <input className="input lg:input-xl mb-2 w-full" type="text" name="name" required />
 
                 <label className="label font-bold">Имейл</label>
-                <input className="input input-xl mb-2 w-full" type="email" name="user_email" required />
+                <input className="input lg:input-xl mb-2 w-full" type="email" name="user_email" required />
 
                 <label className="label font-bold">Телефон</label>
-                <input className="input input-xl mb-2 w-full" type="tel" name="phone" required />
+                <input className="input lg:input-xl mb-2 w-full" type="tel" name="phone" required />
 
                 <label className="label font-bold mt-2">Ще присъствате ли?</label>
                 <div className="flex gap-4 mb-4">
@@ -76,7 +76,7 @@ export function Form() {
                         <label className="label font-bold">Избрано меню</label>
                         <select
                             name="menu"
-                            className="select select-xl mb-4 w-full"
+                            className="select lg:select-xl mb-4 w-full"
                             defaultValue=""
                             required
                         >
@@ -103,7 +103,7 @@ export function Form() {
 
                                 <label className="label font-bold">Име и Фамилия</label>
                                 <input
-                                    className="input input-xl mb-2 w-full"
+                                    className="input lg:input-xl mb-2 w-full"
                                     type="text"
                                     name="guest_name"
                                     required
@@ -111,7 +111,7 @@ export function Form() {
 
                                 <label className="label font-bold">Имейл</label>
                                 <input
-                                    className="input input-xl mb-2 w-full"
+                                    className="input lg:input-xl mb-2 w-full"
                                     type="email"
                                     name="guest_email"
                                     required
@@ -119,7 +119,7 @@ export function Form() {
 
                                 <label className="label font-bold">Телефон</label>
                                 <input
-                                    className="input input-xl mb-2 w-full"
+                                    className="input lg:input-xl mb-2 w-full"
                                     type="tel"
                                     name="guest_phone"
                                     required
@@ -128,7 +128,7 @@ export function Form() {
                                 <label className="label font-bold">Избрано меню</label>
                                 <select
                                     name="guest_menu"
-                                    className="select select-xl w-full"
+                                    className="select lg:select-xl w-full"
                                     defaultValue=""
                                     required
                                 >
@@ -144,7 +144,7 @@ export function Form() {
                         <label className="label font-bold">Ще има ли деца?</label>
                         <select
                             name="children_count"
-                            className="select select-xl mb-4 w-full"
+                            className="select lg:select-xl mb-4 w-full"
                             value={childrenCount}
                             onChange={(e) => setChildrenCount(Number(e.target.value))}
                         >
@@ -165,7 +165,7 @@ export function Form() {
                                         <input
                                             type="text"
                                             name={`child_${i + 1}_name`}
-                                            className="input input-xl w-full"
+                                            className="input lg:input-xl w-full"
                                             required
                                         />
                                     </div>
@@ -199,7 +199,7 @@ export function Form() {
                 {/* Бележка */}
                 <label className="label font-bold">Бележка</label>
                 <textarea
-                    className="textarea textarea-xl mb-4 w-full"
+                    className="textarea lg:textarea-xl mb-4 w-full"
                     name="notes"
                     placeholder="Бележка"
                 />
