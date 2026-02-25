@@ -6,7 +6,8 @@
     font-family: 'Segoe Print';
     font-style: normal;
     font-weight: normal;
-    src: local('Segoe Print'), url('assets/segoepr.ttf') format('ttf');
+    src: url('../public/segoepr.ttf') format('truetype');
+    font-display: swap;
 }
 
 *{

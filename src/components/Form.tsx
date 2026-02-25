@@ -148,7 +148,7 @@ export function Form() {
                             value={childrenCount}
                             onChange={(e) => setChildrenCount(Number(e.target.value))}
                         >
-                            <option value={0}>Няма</option>
+                            <option value={0}>Не</option>
                             <option value={1}>1 дете</option>
                             <option value={2}>2 деца</option>
                         </select>
