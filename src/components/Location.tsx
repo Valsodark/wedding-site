@@ -15,7 +15,7 @@ export function Location() {
 
 
                     <img className="w-130" src={restorant}/>
-                    <p className="text-lg text-center">Като комплимент на желаещите предоставяме нощувкa в хотел AquaLife – 23.08.2026 - 24.08.2026</p>
+                    <p className="text-lg text-center">Потопете се в атмосферата на First Line Restaurant & Bar<br/> – Kranevo Beach.</p>
                     <a
                         className="btn btn-primary mt-5"
                         href="https://www.google.com/maps/place/First+Line/@43.3431436,28.0705318,17z/"
@@ -33,7 +33,7 @@ export function Location() {
                         <h2 className="sm:text-3xl">AquaLife Hotel, Kranevo</h2>
                     </div>
                     <img className="w-130" src={hotel}/>
-                    <p className="text-lg text-center">Като комплимент на желаещите предоставяме нощувкa в хотел AquaLife – 23.08.2026 - 24.08.2026</p>
+                    <p className="text-lg text-center">Като комплимент на желаещите предоставяме нощувкa в хотел AquaLife<br/> – 23.08.2026 - 24.08.2026</p>
                     <a
                         className="btn btn-primary mt-5"
                         href="https://maps.app.goo.gl/TsdwT1Jec38KnqJp9"

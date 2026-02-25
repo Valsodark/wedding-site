@@ -11,6 +11,5 @@ export {DressCode} from './DressCode'
 export {Form} from './Form'
 export {ShowAlert} from './ShowAlert'
 export {CustomerSupport} from './CustomerSupport'
-export {IntroVideo} from "./Intro.tsx"
 export {Carousel} from './Carousel'
 export {Footer} from './Footer'

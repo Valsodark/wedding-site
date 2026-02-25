@@ -4,6 +4,8 @@ import emailjs from "@emailjs/browser";
 export function Form() {
     const [isGuest, setIsGuest] = useState(false);
     const [attendance, setAttendance] = useState("Да");
+    const [childrenCount, setChildrenCount] = useState(0);
+
     const form = useRef<HTMLFormElement | null>(null);
 
     const sendEmail = (e: React.FormEvent) => {
@@ -19,8 +21,9 @@ export function Form() {
             )
             .then(() => {
                 form.current?.reset();
-                setAttendance("Да"); // reset attendance
-                setIsGuest(false);   // reset guest
+                setAttendance("Да");
+                setIsGuest(false);
+                setChildrenCount(0);
             })
             .catch((err) => console.error(err));
     };
@@ -30,7 +33,7 @@ export function Form() {
             <form
                 ref={form}
                 onSubmit={sendEmail}
-                className="fieldset  w-full max-w-lg bg-base-200 border border-base-300 rounded-lg p-6 text-2xl text-wrap"
+                className="fieldset w-full max-w-lg bg-base-200 border border-base-300 rounded-lg p-6 text-2xl"
             >
                 <h2 className="text-3xl font-bold mb-4">Ще присъствате ли?</h2>
 
@@ -39,12 +42,12 @@ export function Form() {
                 <input className="input input-xl mb-2 w-full" type="text" name="name" required />
 
                 <label className="label font-bold">Имейл</label>
-                <input className="input input-xl mb-2 w-full" type="email" name="email" required />
+                <input className="input input-xl mb-2 w-full" type="email" name="user_email" required />
 
                 <label className="label font-bold">Телефон</label>
                 <input className="input input-xl mb-2 w-full" type="tel" name="phone" required />
 
-                <label className="label font-bold mt-2 text-balance">Ще присъствате ли?</label>
+                <label className="label font-bold mt-2">Ще присъствате ли?</label>
                 <div className="flex gap-4 mb-4">
                     <input
                         type="radio"
@@ -55,6 +58,7 @@ export function Form() {
                         onChange={(e) => setAttendance(e.target.value)}
                     />
                     <label>Да</label>
+
                     <input
                         type="radio"
                         name="attendance"
@@ -66,46 +70,68 @@ export function Form() {
                     <label>Не</label>
                 </div>
 
-                {/* Скриване на меню и настаняване ако attendance === "Не" */}
                 {attendance === "Да" && (
                     <>
-                        {/* Избрано меню */}
-                        <label className="label font-bold text-wrap">Избрано меню</label>
-                        <select name="menu" className="select select-xl mb-4 w-full" defaultValue="" required>
+                        {/* Меню */}
+                        <label className="label font-bold">Избрано меню</label>
+                        <select
+                            name="menu"
+                            className="select select-xl mb-4 w-full"
+                            defaultValue=""
+                            required
+                        >
                             <option value="" disabled>Изберете меню</option>
                             <option value="Пилешко">Пилешко</option>
                             <option value="Свинско">Свинско</option>
                             <option value="Вегетарианско">Вегетарианско</option>
                         </select>
 
-                        {/* Checkbox за гост */}
+                        {/* Гост */}
                         <div className="flex items-center gap-2 mb-4">
                             <input
                                 type="checkbox"
-                                name="guest"
                                 className="checkbox"
                                 checked={isGuest}
                                 onChange={(e) => setIsGuest(e.target.checked)}
                             />
-                            <label className="label font-bold text-balance">Ще доведете ли гост?</label>
+                            <label className="label font-bold">Ще доведете ли гост?</label>
                         </div>
 
-                        {/* Гост секция */}
                         {isGuest && (
                             <fieldset className="border p-4 rounded-lg mb-4">
                                 <legend className="font-bold">Данни за гост</legend>
 
-                                <label className="label font-bold mt-2">Име и Фамилия</label>
-                                <input className="input input-xl mb-2 w-full" type="text" name="guest_name" required />
+                                <label className="label font-bold">Име и Фамилия</label>
+                                <input
+                                    className="input input-xl mb-2 w-full"
+                                    type="text"
+                                    name="guest_name"
+                                    required
+                                />
 
                                 <label className="label font-bold">Имейл</label>
-                                <input className="input input-xl mb-2 w-full" type="email" name="guest_email" required />
+                                <input
+                                    className="input input-xl mb-2 w-full"
+                                    type="email"
+                                    name="guest_email"
+                                    required
+                                />
 
                                 <label className="label font-bold">Телефон</label>
-                                <input className="input input-xl mb-2 w-full" type="tel" name="guest_phone" required />
+                                <input
+                                    className="input input-xl mb-2 w-full"
+                                    type="tel"
+                                    name="guest_phone"
+                                    required
+                                />
 
                                 <label className="label font-bold">Избрано меню</label>
-                                <select name="guest_menu" className="select select-lg mb-2 w-full" defaultValue="" required>
+                                <select
+                                    name="guest_menu"
+                                    className="select select-xl w-full"
+                                    defaultValue=""
+                                    required
+                                >
                                     <option value="" disabled>Изберете меню</option>
                                     <option value="Пилешко">Пилешко</option>
                                     <option value="Свинско">Свинско</option>
@@ -114,12 +140,57 @@ export function Form() {
                             </fieldset>
                         )}
 
+                        {/* Деца */}
+                        <label className="label font-bold">Ще има ли деца?</label>
+                        <select
+                            name="children_count"
+                            className="select select-xl mb-4 w-full"
+                            value={childrenCount}
+                            onChange={(e) => setChildrenCount(Number(e.target.value))}
+                        >
+                            <option value={0}>Няма</option>
+                            <option value={1}>1 дете</option>
+                            <option value={2}>2 деца</option>
+                        </select>
+
+                        {childrenCount > 0 && (
+                            <fieldset className="border p-4 rounded-lg mb-4">
+                                <legend className="font-bold">Данни за деца</legend>
+
+                                {Array.from({ length: childrenCount }).map((_, i) => (
+                                    <div key={i} className="mb-3">
+                                        <label className="label font-bold">
+                                            Име на дете {i + 1}
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name={`child_${i + 1}_name`}
+                                            className="input input-xl w-full"
+                                            required
+                                        />
+                                    </div>
+                                ))}
+                            </fieldset>
+                        )}
+
                         {/* Настаняване */}
-                        <label className="label font-bold mt-2 text-balance">Желаете ли настаняване?</label>
+                        <label className="label font-bold">Желаете ли настаняване?</label>
                         <div className="flex gap-4 mb-4">
-                            <input type="radio" className="radio" name="accommodation" value="Да" defaultChecked />
+                            <input
+                                type="radio"
+                                className="radio"
+                                name="accommodation"
+                                value="Да"
+                                defaultChecked
+                            />
                             <label>Да</label>
-                            <input type="radio" className="radio" name="accommodation" value="Не" />
+
+                            <input
+                                type="radio"
+                                className="radio"
+                                name="accommodation"
+                                value="Не"
+                            />
                             <label>Не</label>
                         </div>
                     </>
@@ -127,9 +198,15 @@ export function Form() {
 
                 {/* Бележка */}
                 <label className="label font-bold">Бележка</label>
-                <textarea className="textarea textarea-xl mb-4 w-full" name="notes" placeholder="Бележка"></textarea>
+                <textarea
+                    className="textarea textarea-xl mb-4 w-full"
+                    name="notes"
+                    placeholder="Бележка"
+                />
 
-                <button type="submit" className="btn btn-primary w-full text-lg">Изпрати</button>
+                <button type="submit" className="btn btn-primary w-full text-lg">
+                    Изпрати
+                </button>
             </form>
         </div>
     );
