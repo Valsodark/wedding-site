@@ -53,10 +53,10 @@ export function Carousel({
     }, [animate]);
 
     return (
-        <>
+        <div className="w-full flex flex-col items-center justify-center">
             <h2 className="text-4xl font-bold mb-2 text-center">СНИМКИ</h2>
             <h3 className="text-3xl text-primary-content mb-8 text-center">Вечните спомени</h3>
-            <p className="text-lg mb-20 text-center">Нашият сватбен ден ще бъде изпълнен с много незабравими моменти, които искаме да споделим с вас! След събитието ще можете да разгледате и изтеглите всички снимки
+            <p className="text-lg mb-20 text-center p-5 md:w-180">Нашият сватбен ден ще бъде изпълнен с много незабравими моменти, които искаме да споделим с вас! След събитието ще можете да разгледате и изтеглите всички снимки
                 <br/>
                 Може да ги изтеглите от <a className="underline" href="#">ТУК</a>.
                 <br/>
@@ -110,6 +110,6 @@ export function Carousel({
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

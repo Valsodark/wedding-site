@@ -2,7 +2,6 @@
 @plugin "daisyui";
 
 
-
 @plugin "daisyui/theme" {
     name: "light";
     default: false;
@@ -36,4 +35,186 @@
     --border: 1px;
     --depth: 1;
     --noise: 0;
+}
+
+/* --- INTERACTIVE LETTER LOADER --- */
+
+.letter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    perspective: 1500px;
+    /* We keep pointer-events active initially so we can click the seal */
+    transition: visibility 0s linear 1.5s; /* Hide overlay after anim ends */
+}
+
+/* Hide the overlay completely after opening so we can interact with the App */
+.letter-overlay.open {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* --- THE FLAPS --- */
+.letter-flap {
+    width: 100%;
+    height: 50vh;
+    background-color: #f3f0eb;
+    background-image: linear-gradient(to bottom, #f3f0eb, #ece8e1);
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Ensure the back of the flap looks realistic when rotating */
+    backface-visibility: hidden;
+}
+
+.letter-flap.top {
+    transform-origin: top;
+    border-bottom: 1px solid #dcd9d4;
+    z-index: 11; /* Slightly higher to cast shadow on bottom */
+}
+
+.letter-flap.bottom {
+    transform-origin: bottom;
+    border-top: 1px solid #fff;
+    z-index: 10;
+}
+
+/* --- THE WAX SEAL (BUTTON) --- */
+.wax-seal-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* CHANGED: Increased from 90px to 120px */
+    width: 120px;
+    height: 120px;
+    z-index: 100;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* The actual visual seal styling */
+.wax-seal-visual {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary-content);
+    border-radius: 50%;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Initials/Logo */
+.wax-seal-visual::after {
+    content: "N&Z";
+    color: rgba(255,255,255,0.9);
+    font-family: serif;
+    font-weight: bold;
+    /* CHANGED: Increased font size for better visibility */
+    font-size: 30px;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    /* CHANGED: Increased inner circle size to match new button size */
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+/* --- OPENING ANIMATION STATES --- */
+
+/* 1. Break the seal */
+.letter-overlay.open .wax-seal-button {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+    pointer-events: none; /* Prevent double clicking */
+}
+
+/* 2. Open the flaps (with slight delay so seal breaks first) */
+.letter-overlay.open .letter-flap.top {
+    transform: rotateX(100deg);
+    transition-delay: 0.2s; /* Wait 0.2s for seal to start fading */
+}
+
+.letter-overlay.open .letter-flap.bottom {
+    transform: rotateX(-100deg);
+    transition-delay: 0.2s;
+}
+
+@media only screen and (max-width: 600px) {
+    .wax-seal-visual::after {
+        font-size: 25px;
+
+    }
+
+}
+
+/* --- CIRCULAR TEXT WRAPPER --- */
+.circular-text-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Center the wrapper perfectly */
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 101;
+    pointer-events: none;
+
+    /* STATIONARY: Removed the infinite spin animation */
+    /* Just a simple fade-in so it doesn't pop abruptly */
+    opacity: 0;
+    animation: fadeInText 1s ease-out 1s forwards;
+}
+
+.circular-text-svg {
+    width: 100%;
+    height: 105%;
+    /* Ensures text doesn't get cut off if it's wide */
+    overflow: visible;
+}
+
+.circle-text {
+    fill: #555;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 14px; /* Slightly smaller for elegance since it's static */
+    letter-spacing: 3px; /* Wide spacing looks very elegant on static text */
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
