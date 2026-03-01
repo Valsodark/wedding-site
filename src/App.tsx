@@ -7,13 +7,13 @@ import {
 } from "./components";
 
 // ... (Your image imports) ...
-import image1 from "./assets/NataliaZhivko_0049.jpg";
-import image2 from "./assets/NataliaZhivko_0045.jpg";
-import image3 from "./assets/NataliaZhivko_0009.jpg";
-import image4 from "./assets/NataliaZhivko_0154.jpg";
-import image5 from "./assets/NataliaZhivko_0103.jpg";
-import image6 from "./assets/NataliaZhivko_0126.jpg";
-import image7 from "./assets/NataliaZhivko_140.jpg";
+import image1 from "./assets/NataliaZhivko_0049.webp";
+import image2 from "./assets/NataliaZhivko_0045.webp";
+import image3 from "./assets/NataliaZhivko_0009.webp";
+import image4 from "./assets/NataliaZhivko_0154.webp";
+import image5 from "./assets/NataliaZhivko_0103.webp";
+import image6 from "./assets/NataliaZhivko_0126.webp";
+import image7 from "./assets/NataliaZhivko_140.webp";
 
 const images = [image1, image3, image2, image4, image5, image6, image7];
 

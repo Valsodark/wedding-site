@@ -1,4 +1,4 @@
-import arc from "../assets/beach-arc2.png"
+import arc from "../assets/beach-arc2.webp"
 
 export function Hero() {
     return (

@@ -1,6 +1,6 @@
-import letter from '../assets/lettar.png'
-import flowers from '../assets/flowers.png'
-import woman from '../assets/woman.png'
+import letter from '../assets/lettar.webp'
+import flowers from '../assets/flowers.webp'
+import woman from '../assets/woman.webp'
 
 export function Information() {
     return (

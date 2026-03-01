@@ -1,5 +1,5 @@
 import {Calendar} from "./Calendar.tsx"
-import profile from "../assets/profiple.jpg"
+import profile from "../assets/profiple.webp"
 
 export function Card() {
     return (

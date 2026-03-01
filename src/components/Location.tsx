@@ -1,5 +1,5 @@
-import restorant from '../assets/restorant.png';
-import hotel from '../assets/hotel.png';
+import restorant from '../assets/restorant.webp';
+import hotel from '../assets/hotel.webp';
 
 export function Location() {
     return (

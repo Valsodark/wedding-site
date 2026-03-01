@@ -60,7 +60,7 @@ export function Carousel({
                 <br/>
                 Може да ги изтеглите от <a className="underline" href="#">ТУК</a>.
                 <br/>
-                ( линкът ще бъде активен най-рано 3 месеца след сватбеното събитие )</p>
+                (линкът ще бъде активен най-рано 3 месеца след сватбеното събитие)</p>
             <div className="relative overflow-hidden w-full max-w-6xl mx-auto">
                 <div
                     className={`flex ${

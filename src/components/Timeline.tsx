@@ -1,10 +1,10 @@
 import {Spacer} from "./Spacer.tsx";
 import {Dot} from "./Dot.tsx";
-import glass from "../assets/glass.png"
-import rings from "../assets/rings.png"
-import cupcake from "../assets/cupcake.png"
-import chair from "../assets/chair.png"
-import cake from "../assets/cake.png"
+import glass from "../assets/glass.webp"
+import rings from "../assets/rings.webp"
+import cupcake from "../assets/cupcake.webp"
+import chair from "../assets/chair.webp"
+import cake from "../assets/cake.webp"
 
 
 export function Timeline() {
