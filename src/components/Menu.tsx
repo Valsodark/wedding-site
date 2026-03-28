@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 import saladChickenBeef from "../assets/salad-chicken-beef.png";
 import starterChickenBeef from "../assets/starter-chiken-beef.png";
@@ -69,63 +70,108 @@ const pages = [
 
 export function Menu() {
     const [page, setPage] = useState(0);
+    const [direction, setDirection] = useState(1);
 
     const changePage = (newPage: number) => {
         if (newPage < 0 || newPage >= pages.length || newPage === page) return;
+        setDirection(newPage > page ? 1 : -1);
         setPage(newPage);
     };
 
     const nextPage = () => changePage(page + 1);
     const prevPage = () => changePage(page - 1);
 
+    const variants = {
+        enter: (direction: number) => ({
+            x: direction > 0 ? 100 : -100,
+            opacity: 0,
+        }),
+        center: {
+            x: 0,
+            opacity: 1,
+        },
+        exit: (direction: number) => ({
+            x: direction < 0 ? 100 : -100,
+            opacity: 0,
+        }),
+    };
+
+    const variantTitles = ["Пилешко меню", "Свинско меню", "Вегетарианско меню "];
+
     return (
-        <div className="w-full flex flex-col items-center gap-6 py-12">
-            <h1 className="text-4xl font-bold text-center mb-8">Restaurant Menu</h1>
+        <div className="w-full flex flex-col items-center gap-6 py-12 overflow-hidden">
+            <h1 className="text-4xl font-bold text-center mb-2">Restaurant Menu</h1>
 
-            <div className="relative w-full max-w-4xl flex items-center justify-center">
-                <button
-                    onClick={prevPage}
-                    disabled={page === 0}
-                    className="absolute -left-12 md:left-0 z-20 p-4 rounded-full transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-30"
-                    aria-label="Previous page"
-                >
-                    <ChevronLeft className="h-8 w-8 text-gray-700" />
-                </button>
-
-                <div className="w-full px-12 md:px-24">
-                    <div className="flex flex-col gap-8">
-                        {pages[page].map((item, index) => (
-                            <div
-                                key={index}
-                                className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 transition-transform hover:scale-[1.02]"
-                            >
-                                <img
-                                    src={item.img}
-                                    alt={item.title}
-                                    className="w-full md:w-80 h-80 object-cover"
-                                    referrerPolicy="no-referrer"
-                                />
-                                <div className="p-6 flex flex-col justify-center flex-1">
-                                    <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-                                        {item.title}
-                                    </h2>
-                                    <p className="text-gray-600 text-lg leading-relaxed">
-                                        {item.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
+            <div className="flex w-full max-w-6xl mx-auto relative">
+                {/* Left Sticky Arrow */}
+                <div className="w-14 md:w-24 flex-shrink-0 relative z-20">
+                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center">
+                        <button
+                            onClick={prevPage}
+                            disabled={page === 0}
+                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30"
+                            aria-label="Previous page"
+                        >
+                            <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
+                        </button>
                     </div>
                 </div>
 
-                <button
-                    onClick={nextPage}
-                    disabled={page === pages.length - 1}
-                    className="absolute -right-12 md:right-0 z-20 p-4 rounded-full transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-30"
-                    aria-label="Next page"
-                >
-                    <ChevronRight className="h-8 w-8 text-gray-700" />
-                </button>
+                {/* Content */}
+                <div className="flex-1 min-w-0 px-2 md:px-4">
+                    <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                            key={page}
+                            custom={direction}
+                            variants={variants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="flex flex-col gap-6 md:gap-8"
+                        >
+                            <h2 className="text-2xl md:text-3xl font-medium text-center text-gray-500 mb-2">
+                                {variantTitles[page]}
+                            </h2>
+
+                            {pages[page].map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 transition-transform hover:scale-[1.02]"
+                                >
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="w-full md:w-80 h-64 md:h-80 object-cover"
+                                        referrerPolicy="no-referrer"
+                                    />
+                                    <div className="p-6 flex flex-col justify-center flex-1">
+                                        <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                                            {item.title}
+                                        </h2>
+                                        <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+
+                {/* Right Sticky Arrow */}
+                <div className="w-14 md:w-24 flex-shrink-0 relative z-20">
+                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center">
+                        <button
+                            onClick={nextPage}
+                            disabled={page === pages.length - 1}
+                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30"
+                            aria-label="Next page"
+                        >
+                            <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <div className="flex gap-3 mt-8">
@@ -133,9 +179,9 @@ export function Menu() {
                     <button
                         key={index}
                         onClick={() => changePage(index)}
-                        className={`w-12 h-12 rounded-full font-medium text-lg transition-colors ${
+                        className={`w-10 h-10 md:w-12 md:h-12 rounded-full font-medium text-base md:text-lg transition-colors ${
                             page === index
-                                ? "bg-secondary-content text-white shadow-md"
+                                ? "bg-gray-900 text-white shadow-md"
                                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
                     >
