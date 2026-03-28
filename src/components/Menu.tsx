@@ -96,20 +96,20 @@ export function Menu() {
         }),
     };
 
-    const variantTitles = ["Пилешко меню", "Свинско меню", "Вегетарианско меню "];
+    const variantTitles = ["Пилешко меню", "Свинско меню", "Вегетарианско меню"];
 
     return (
-        <div className="w-full flex flex-col items-center gap-6 py-12 overflow-hidden">
-            <h1 className="text-4xl font-bold text-center mb-2">Restaurant Menu</h1>
+        <div className="w-full flex flex-col items-center gap-6 py-12">
+            <h1 className="text-4xl font-bold text-center mb-2">Меню</h1>
 
             <div className="flex w-full max-w-6xl mx-auto relative">
-                {/* Left Sticky Arrow */}
-                <div className="w-14 md:w-24 flex-shrink-0 relative z-20">
-                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center">
+                {/* Left Arrow */}
+                <div className="w-14 md:w-24 flex-shrink-0 relative z-20 py-40 lg:py-0">
+                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center lg:static lg:h-full lg:items-center lg:translate-y-0">
                         <button
                             onClick={prevPage}
                             disabled={page === 0}
-                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30"
+                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30 shadow-sm"
                             aria-label="Previous page"
                         >
                             <ChevronLeft className="h-6 w-6 md:h-8 md:w-8" />
@@ -118,7 +118,7 @@ export function Menu() {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 min-w-0 px-2 md:px-4">
+                <div className="flex-1 min-w-0 px-2 md:px-4 overflow-x-hidden py-4 -my-4">
                     <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                             key={page}
@@ -159,13 +159,13 @@ export function Menu() {
                     </AnimatePresence>
                 </div>
 
-                {/* Right Sticky Arrow */}
-                <div className="w-14 md:w-24 flex-shrink-0 relative z-20">
-                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center">
+                {/* Right Arrow */}
+                <div className="w-14 md:w-24 flex-shrink-0 relative z-20 py-40 lg:py-0">
+                    <div className="sticky top-1/2 -translate-y-1/2 flex justify-center lg:static lg:h-full lg:items-center lg:translate-y-0">
                         <button
                             onClick={nextPage}
                             disabled={page === pages.length - 1}
-                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30"
+                            className="p-2 md:p-4 rounded-full bg-gray-900/10 hover:bg-gray-900/30 backdrop-blur-md text-gray-800 hover:text-white transition-all disabled:cursor-not-allowed disabled:opacity-30 shadow-sm"
                             aria-label="Next page"
                         >
                             <ChevronRight className="h-6 w-6 md:h-8 md:w-8" />
@@ -181,7 +181,7 @@ export function Menu() {
                         onClick={() => changePage(index)}
                         className={`w-10 h-10 md:w-12 md:h-12 rounded-full font-medium text-base md:text-lg transition-colors ${
                             page === index
-                                ? "bg-gray-900 text-white shadow-md"
+                                ? "bg-secondary-content text-white shadow-md"
                                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                         }`}
                     >

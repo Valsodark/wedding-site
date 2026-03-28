@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import {Spacer} from "./Spacer.tsx";
+import { AnimatePresence, motion } from "motion/react";
+import { Spacer } from "./Spacer.tsx";
 
 const TARGET_DATE = new Date(2026, 7, 23, 0, 0, 0); // Aug 23, 2026
 
@@ -51,52 +52,28 @@ export function Cooldown() {
     );
 }
 function TimeBox({ label, value }: { label: string; value: number }) {
-    const [prev, setPrev] = useState(value);
-    const [current, setCurrent] = useState(value);
-
-    if (value !== current) {
-        setPrev(current);
-        setCurrent(value);
-    }
-
-    const prevStr = prev.toString().padStart(2, "0");
-    const currentStr = current.toString().padStart(2, "0");
+    const currentStr = value.toString().padStart(2, "0");
 
     return (
         <div className="flex flex-col items-center">
-            <div className="relative w-fit min-w-[7rem] px-3 h-28 bg-primary-content rounded-box shadow-xl text-neutral-content font-mono text-6xl font-bold perspective-normal">
-
-                {/* 2. INVISIBLE SPAN TRICK: This physically props the container open to the exact width of the numbers */}
+            <div className="relative w-fit min-w-[7rem] px-4 h-28 bg-primary-content rounded-box shadow-xl flex items-center justify-center overflow-hidden">
+                {/* INVISIBLE SPAN TRICK: Props the container open to the exact width of the numbers (supports 3+ digits) */}
                 <div className="invisible flex h-full items-center justify-center">
-                    <span>{currentStr}</span>
+                    <span className="font-mono text-5xl md:text-6xl font-bold">{currentStr}</span>
                 </div>
 
-                {/* Static Top: Shows the NEW number */}
-                <div className="absolute inset-x-0 top-0 h-1/2 bg-primary-content rounded-t-box  border-primary-content overflow-hidden flex justify-center items-end">
-                    <span className="translate-y-1/2">{currentStr}</span>
-                </div>
-
-                {/* Static Bottom: Shows the OLD number */}
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-primary-content rounded-b-box overflow-hidden flex justify-center items-start">
-                    <span className="-translate-y-1/2">{prevStr}</span>
-                </div>
-
-                {/* Flapping Top: Shows OLD number, falls forward from 0deg to -90deg */}
-                <div
-                    key={`top-${current}`}
-                    className="absolute inset-x-0 top-0 h-1/2 bg-primary-content rounded-t-box  border-primary-content overflow-hidden flex justify-center items-end origin-bottom animate-flip-top z-10 backface-hidden"
-                >
-                    <span className="translate-y-1/2">{prevStr}</span>
-                </div>
-
-                {/* Flapping Bottom: Shows NEW number, waits at 90deg, then falls to 0deg */}
-                <div
-                    key={`bottom-${current}`}
-                    className="absolute inset-x-0 bottom-0 h-1/2 bg-primary-content rounded-b-box overflow-hidden flex justify-center items-start origin-top animate-flip-bottom z-10 backface-hidden"
-                    style={{ transform: "rotateX(90deg)" }}
-                >
-                    <span className="-translate-y-1/2">{currentStr}</span>
-                </div>
+                <AnimatePresence mode="popLayout">
+                    <motion.span
+                        key={currentStr}
+                        initial={{ y: 40, opacity: 0, scale: 0.8 }}
+                        animate={{ y: 0, opacity: 1, scale: 1 }}
+                        exit={{ y: -40, opacity: 0, scale: 0.8 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                        className="text-neutral-content font-mono text-5xl md:text-6xl font-bold absolute"
+                    >
+                        {currentStr}
+                    </motion.span>
+                </AnimatePresence>
             </div>
             <span className="mt-4 text-lg font-semibold">{label}</span>
         </div>
