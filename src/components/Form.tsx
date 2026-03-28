@@ -1,13 +1,13 @@
-import { useState, useRef } from "react";
+import {useState, useRef} from "react";
 import emailjs from "@emailjs/browser";
 
+
 export function Form() {
-    const [isGuest, setIsGuest] = useState(false);
+    const [isGuest, setIsGuest] = useState("Не");
     const [attendance, setAttendance] = useState("Да");
     const [childrenCount, setChildrenCount] = useState(0);
 
     const form = useRef<HTMLFormElement | null>(null);
-
     const sendEmail = (e: React.FormEvent) => {
         e.preventDefault();
         if (!form.current) return;
@@ -22,7 +22,7 @@ export function Form() {
             .then(() => {
                 form.current?.reset();
                 setAttendance("Да");
-                setIsGuest(false);
+                setIsGuest("Не");
                 setChildrenCount(0);
             })
             .catch((err) => console.error(err));
@@ -37,6 +37,8 @@ export function Form() {
             >
                 <h2 className="text-lg lg:text-3xl font-bold mb-4">Ще присъствате ли?</h2>
 
+                <span className="text-[19px] text-left">Моля, попълнете формата до <span className="font-bold">15.06.2026!</span></span>
+
                 {/* Основен гост */}
                 <label className="label font-bold">Име и Фамилия</label>
                 <input className="input lg:input-xl mb-2 w-full" type="text" name="name" required />
@@ -45,7 +47,19 @@ export function Form() {
                 <input className="input lg:input-xl mb-2 w-full" type="email" name="user_email" required />
 
                 <label className="label font-bold">Телефон</label>
-                <input className="input lg:input-xl mb-2 w-full" type="tel" name="phone" required />
+                <input
+                    className="input lg:input-xl mb-2 w-full"
+                    type="tel"
+                    name="phone"
+                    placeholder="088 123 4567"
+                    inputMode="numeric"
+                    onKeyDown={(e) => {
+                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Tab') {
+                            e.preventDefault();
+                        }
+                    }}
+                    required
+                />
 
                 <label className="label font-bold mt-2">Ще присъствате ли?</label>
                 <div className="flex gap-4 mb-4">
@@ -87,7 +101,29 @@ export function Form() {
                         </select>
 
                         {/* Гост */}
-                        <div className="flex items-center gap-2 mb-4">
+                        <label className="label font-bold">Ще доведете ли гост?</label>
+                        <div className="flex gap-4 mb-4">
+                            <input
+                                type="radio"
+                                name="guest"
+                                value="Да"
+                                checked={isGuest === "Да"}
+                                className="radio"
+                                onChange={(e) => setIsGuest(e.target.value)}
+                            />
+                            <label>Да</label>
+
+                            <input
+                                type="radio"
+                                name="guest"
+                                value="Не"
+                                checked={isGuest === "Не"}
+                                className="radio"
+                                onChange={(e) => setIsGuest(e.target.value)}
+                            />
+                            <label>Не</label>
+                        </div>
+{/*                        <div className="flex items-center gap-2 mb-4">
                             <input
                                 type="checkbox"
                                 className="checkbox"
@@ -95,9 +131,9 @@ export function Form() {
                                 onChange={(e) => setIsGuest(e.target.checked)}
                             />
                             <label className="label font-bold">Ще доведете ли гост?</label>
-                        </div>
+                        </div>*/}
 
-                        {isGuest && (
+                        {isGuest === "Да" && (
                             <fieldset className="border p-4 rounded-lg mb-4">
                                 <legend className="font-bold">Данни за гост</legend>
 
@@ -121,7 +157,14 @@ export function Form() {
                                 <input
                                     className="input lg:input-xl mb-2 w-full"
                                     type="tel"
-                                    name="guest_phone"
+                                    name="phone"
+                                    placeholder="088 123 4567"
+                                    inputMode="numeric"
+                                    onKeyDown={(e) => {
+                                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Tab') {
+                                            e.preventDefault();
+                                        }
+                                    }}
                                     required
                                 />
 
@@ -207,6 +250,7 @@ export function Form() {
                 <button type="submit" className="btn btn-primary w-full text-lg">
                     Изпрати
                 </button>
+                <span className="text-[20px] text-center">Ще получите имейл с попълнените от вас данни.</span>
             </form>
         </div>
     );

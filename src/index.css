@@ -12,8 +12,6 @@
 
 *{
     font-family: 'Segoe Print', Tahoma, Geneva, Verdana, sans-serif;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
 }
 
 
@@ -87,6 +85,12 @@ hr{
     background-color: var(--color-primary-content) !important;
 }
 
+.animate-flip {
+    display: inline-block;
+    backface-visibility: hidden;
+    animation: flip 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
 @media only screen and (max-width: 600px) {
     .custom-selected::before{
         background: center / 37px  no-repeat
@@ -99,4 +103,27 @@ stroke='%23e11d48' stroke-width='0.456' stroke-linecap='round' stroke-linejoin='
         transform: translate(-50%, -50%) translateY(25px) translateX(20.2px);
     }
 
+}
+
+.perspective-normal {
+    perspective: 400px;
+}
+.backface-hidden {
+    backface-visibility: hidden;
+}
+
+@keyframes flipTop {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(-90deg); }
+}
+.animate-flip-top {
+    animation: flipTop 0.3s ease-in forwards;
+}
+
+@keyframes flipBottom {
+    0% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+.animate-flip-bottom {
+    animation: flipBottom 0.3s ease-out 0.3s forwards;
 }

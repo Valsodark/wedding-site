@@ -3,7 +3,7 @@ import './App.css';
 import {
     Navbar, Hero, Card, Timeline, Spacer, Cooldown,
     Location, Information, DressCode, Form,
-    CustomerSupport, Carousel, Footer
+    CustomerSupport, Carousel, Footer, Menu
 } from "./components";
 
 // ... (Your image imports) ...
@@ -38,12 +38,6 @@ function App() {
                     <div className="circular-text-wrapper">
                         <svg viewBox="0 0 200 200" className="circular-text-svg">
 
-                            {/* Path Logic (Center 100,100 | Radius 75):
-            1. Top Path: Starts Left (25,100), Arches UP, Ends Right (175,100).
-            2. Bottom Path: Starts Left (25,100), Arches DOWN, Ends Right (175,100).
-
-            Both paths go Left-to-Right, so text is never reversed.
-        */}
 
                             <path id="textPathTop" d="M 25,100 A 75,75 0 1,1 175,100" fill="none" />
                             <path id="textPathBottom" d="M 25,100 A 75,75 0 0,0 175,100" fill="none" />
@@ -85,6 +79,8 @@ function App() {
             <Information />
             <Spacer />
             <DressCode />
+            <Spacer />
+            <Menu />
             <Spacer />
             <Form />
             <Spacer />
