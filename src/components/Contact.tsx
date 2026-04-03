@@ -17,7 +17,7 @@ export function Contact() {
     };
 
     return (
-        <div className="card w-full max-w-lg bg-base-100 mx-auto mt-10">
+        <div className="card w-full max-w-lg bg-base-100 mx-auto mb-10">
             <div className="card-body items-center text-center text-lg">
                 <h2 className="card-title text-2xl mb-4">Може да се свържете с нас на:</h2>
 

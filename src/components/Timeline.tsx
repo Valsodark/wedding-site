@@ -19,7 +19,7 @@ export function Timeline() {
                           <Dot />
                       </div>
                       <div className="timeline-start mb-10 md:text-end text-lg">
-                          <time className="font-mono italic text-accent-content">18:00</time>
+                          <time className="font-mono italic text-accent-content">17:30</time>
                           <div className="text-2xl font-black ">Добре дошли!</div>
                           Начало на празничния ден с освежаващи напитки и приятни моменти.
                       </div>
@@ -31,7 +31,7 @@ export function Timeline() {
                   <li>
                       <hr />
                       <div className="timeline-end md:mb-10 text-lg">
-                          <time className="font-mono italic text-accent-content">18:30</time>
+                          <time className="font-mono italic text-accent-content">18:00</time>
                           <div className="text-2xl  font-black">Граждански Брак</div>
                           Официалният момент, в който ще кажем „Да“ един на друг.
                       </div>
@@ -49,7 +49,7 @@ export function Timeline() {
                           <Dot />
                       </div>
                       <div className="timeline-start mb-10 md:text-end text-lg">
-                          <time className="font-mono italic text-accent-content">19:00</time>
+                          <time className="font-mono italic text-accent-content">18:30</time>
                           <div className="text-2xl  font-black">Поздравления и време за снимки</div>
                           Споделени емоции и незабравими кадри.
                       </div>
@@ -67,7 +67,7 @@ export function Timeline() {
                           <img alt="" className="" src={chair}/>
                       </div>
                       <div className="timeline-end md:mb-10 text-lg">
-                          <time className="font-mono italic text-accent-content">20:00</time>
+                          <time className="font-mono italic text-accent-content">19:00</time>
                           <div className="text-2xl  font-black">Празнична вечеря и незабравимо веселие</div>
                           Време е за вкусни ястия, вълнуващи тостове и много танци, смях и хубави емоции!
                       </div>
@@ -79,7 +79,7 @@ export function Timeline() {
                           <Dot />
                       </div>
                       <div className="timeline-start mb-10 md:text-end text-lg">
-                          <time className="font-mono italic text-accent-content">23:00 </time>
+                          <time className="font-mono italic text-accent-content">23:00</time>
                           <div className="text-2xl font-black">Торта</div>
                           Най-сладкият момент където ще се насладим на вкусна торта, празнична заря и прекрасни моменти!
                       </div>
@@ -96,7 +96,7 @@ export function Timeline() {
                             <Dot />
                         </div>
                         <div className="timeline-start mb-10 md:text-end text-lg">
-                            <time className="font-mono italic text-accent-content">18:00</time>
+                            <time className="font-mono italic text-accent-content">17:30</time>
                             <div className="text-2xl font-black ">Добре дошли!</div>
                             Начало на празничния ден с освежаващи напитки и приятни моменти.
                         </div>
@@ -108,7 +108,7 @@ export function Timeline() {
                     <li>
                         <hr />
                         <div className="timeline-start sm:timeline-end md:mb-10 text-lg">
-                            <time className="font-mono italic text-accent-content">18:30</time>
+                            <time className="font-mono italic text-accent-content">18:00</time>
                             <div className="text-2xl  font-black">Граждански Брак</div>
                             Официалният момент, в който ще кажем „Да“ един на друг.
                         </div>
@@ -126,7 +126,7 @@ export function Timeline() {
                             <Dot />
                         </div>
                         <div className="timeline-start mb-10 md:text-end text-lg">
-                            <time className="font-mono italic text-accent-content">19:00</time>
+                            <time className="font-mono italic text-accent-content">18:30</time>
                             <div className="text-2xl  font-black">Поздравления и време за снимки</div>
                             Споделени емоции и незабравими кадри.
                         </div>
@@ -144,7 +144,7 @@ export function Timeline() {
                             <img alt="" className="" src={chair}/>
                         </div>
                         <div className="timeline-start sm:timeline-end md:mb-10 text-lg">
-                            <time className="font-mono italic text-accent-content">20:00</time>
+                            <time className="font-mono italic text-accent-content">19:00</time>
                             <div className="text-2xl  font-black">Празнична вечеря и незабравимо веселие</div>
                             Време е за вкусни ястия, вълнуващи тостове и много танци, смях и хубави емоции!
                         </div>
