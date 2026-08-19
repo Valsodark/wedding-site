@@ -3,7 +3,7 @@ import './App.css';
 import {
     Navbar, Hero, Card, Timeline, Spacer, Cooldown,
     Location, Information, DressCode, Form,
-    CustomerSupport, Carousel, Footer, Menu, Contact
+    CustomerSupport, Carousel, Footer, Menu, Contact, PhotoUpload
 } from "./components";
 
 // ... (Your image imports) ...
@@ -85,6 +85,8 @@ function App() {
             <Form />
             <Spacer />
             <Contact />
+            <Spacer />
+            <PhotoUpload />
             <Spacer />
             <Carousel slides={images} />
             <Spacer />

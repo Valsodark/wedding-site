@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# wrangler build + auth cache (holds account id and account name)
+.wrangler/
+worker/.wrangler/
